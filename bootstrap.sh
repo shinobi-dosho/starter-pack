@@ -59,6 +59,12 @@ for f in "${files[@]}"; do
     # matters: the uppercase form is replaced first so it cannot be clobbered by
     # a case-insensitive match on the lowercase one.
     sed -i "s/PROJECT_NAME/$dist_name/g; s/project_name/$pkg_name/g" "$f"
+    # uv.lock records the *normalised* distribution name -- uv rewrites
+    # PROJECT_NAME to project-name when it resolves -- so neither pattern above
+    # matches it. Missing this leaves the lock naming a project that no longer
+    # exists, and every --locked/--frozen command in CI fails on a tree that
+    # looks correct.
+    sed -i "s/project-name/$dist_name/g" "$f"
     # LICENSE carries COPYRIGHT_YEAR rather than a baked-in year, so a repo
     # created from this template is not stamped with the year the template was
     # written. docs/conf.py computes its year at build time instead.
@@ -72,7 +78,7 @@ echo "Done. Next:"
 echo "  1. Edit AGENTS.md, CONTRIBUTING.md and SECURITY.md where they say to."
 echo "  2. Set the description and dependencies in pyproject.toml."
 echo "  3. uv sync --group dev && git config core.hooksPath .githooks"
-echo "  4. uv lock  (CI runs --locked; the lock must be committed)"
+echo "  4. uv lock  (after changing dependencies; CI runs --locked)"
 echo
 
 rm -- "$0"

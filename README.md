@@ -86,8 +86,8 @@ URLs there. The template already does; keep it that way when you edit.
 
 ## Deliberately not included
 
-- **`uv.lock`.** It cannot be generated meaningfully until you have declared real
-  dependencies. Run `uv lock` as part of bootstrapping; CI is `--locked` and will
-  fail without it.
+- **Nothing you must generate before CI passes.** `uv.lock` is committed, so a
+  repo created from this template is green on its first push. Re-run `uv lock`
+  after you change dependencies — CI is `--locked` and will fail on a stale one.
 - **Branch protection.** Set on the repo, not in the tree. Most org repos require
   a green CI run and a review on `main`.
