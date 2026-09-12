@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: If you use this software, please cite it using these metadata.
+title: PROJECT_NAME
+type: software
+authors:
+- family-names: Makhathini
+  given-names: Sphesihle
+  email: sphemakh@gmail.com
+  orcid: https://orcid.org/0000-0001-9565-9622
+abstract: Research software in the shinobi-dosho organisation.
+version: 0.1.0b1
+keywords:
+- research software
+license: Apache-2.0
+repository-code: https://github.com/shinobi-dosho/PROJECT_NAME
+url: https://github.com/shinobi-dosho/PROJECT_NAME
