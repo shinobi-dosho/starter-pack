@@ -65,7 +65,7 @@ for f in "${files[@]}"; do
     # exists, and every --locked/--frozen command in CI fails on a tree that
     # looks correct.
     sed -i "s/project-name/$dist_name/g" "$f"
-    # LICENSE carries COPYRIGHT_YEAR rather than a baked-in year, so a repo
+    # NOTICE carries COPYRIGHT_YEAR rather than a baked-in year, so a repo
     # created from this template is not stamped with the year the template was
     # written. docs/conf.py computes its year at build time instead.
     sed -i "s/COPYRIGHT_YEAR/$(date +%Y)/g" "$f"

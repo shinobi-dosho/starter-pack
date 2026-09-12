@@ -5,8 +5,8 @@ description = "One line on what this does. Shows up on PyPI and in search result
 authors = [
     {name = "Sphesihle Makhathini", email = "sphemakh@gmail.com"},
 ]
-license = "MIT"
-license-files = ["LICENSE"]
+license = "Apache-2.0"
+license-files = ["LICENSE", "NOTICE"]
 readme = "README.md"
 # 3.11 floor, deliberately. It is the floor the rest of the organisation's
 # packages carry, and mixing a lower one in a project that depends on them makes
@@ -42,6 +42,7 @@ include = [
     "/tests",
     "/README.md",
     "/LICENSE",
+    "/NOTICE",
     "/CHANGELOG.md",
     "/AGENTS.md",
     "/CONTRIBUTING.md",

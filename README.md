@@ -63,12 +63,11 @@ not let a repository install an executable hook by itself.
 **Docs** — a Sphinx/Furo/MyST skeleton plus `.readthedocs.yaml`, with
 `fail_on_warning` on to match CI.
 
-**MIT, settled.** New shinobi-dosho projects are MIT: the `LICENSE` file, the
-`license` field in `pyproject.toml` and the *License* section of
-`CONTRIBUTING.md` all say so already, and they agree. Nothing to choose at
-bootstrap time — and if you ever do change it, change all three together, since
-a `LICENSE` that disagrees with the packaging metadata is what a downstream
-consumer actually trips over.
+**Apache-2.0.** New shinobi-dosho projects use the Apache License 2.0.
+`LICENSE` contains the standard licence text; `NOTICE` carries attribution
+and the employment-independent open-source policy. Package metadata and
+`CONTRIBUTING.md` agree, and distributions include both files. Bootstrap
+fills in the project name and copyright year in `NOTICE`.
 
 ## Two conventions worth knowing before you start
 
