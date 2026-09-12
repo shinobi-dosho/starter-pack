@@ -1,5 +1,10 @@
 # starter-pack
 
+Please acknowledge this project and its contributors when using the work
+in research, and cite the associated publications and software release
+where applicable. This is a scholarly request, not an additional licence
+condition.
+
 A template repository for new [shinobi-dosho](https://github.com/shinobi-dosho)
 projects. It carries the organisation's conventions already wired up, so a new
 repo starts green rather than accumulating them one PR at a time.
