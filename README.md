@@ -41,10 +41,10 @@ gh api -X POST "repos/$(gh repo view --json nameWithOwner --jq .nameWithOwner)/r
   --input .github/main-ruleset.json
 ```
 
-It requires a pull request, one approval, and the template's CI checks; it
-blocks deletion and force pushes to the default branch. Repository admins can
-bypass approval through a pull request when there is no other reviewer, but
-cannot use that bypass for a direct push.
+It requires a pull request, one approval, signed commits, and the template's
+CI checks; it blocks deletion and force pushes to the default branch. Repository
+admins can bypass approval through a pull request when there is no other
+reviewer, but cannot use that bypass for a direct push.
 
 Then edit the three places that cannot be generated:
 
