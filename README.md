@@ -32,6 +32,20 @@ uv run pytest
 and `project_name` to the importable package name (`my_project`). It only
 touches tracked files.
 
+GitHub does not copy repository rulesets when creating a repository from a
+template. After the first push, a repository admin must apply the included
+`main` ruleset once from the new repository's clone:
+
+```bash
+gh api -X POST "repos/$(gh repo view --json nameWithOwner --jq .nameWithOwner)/rulesets" \
+  --input .github/main-ruleset.json
+```
+
+It requires a pull request, one approval, and the template's CI checks; it
+blocks deletion and force pushes to the default branch. Repository admins can
+bypass approval through a pull request when there is no other reviewer, but
+cannot use that bypass for a direct push.
+
 Then edit the three places that cannot be generated:
 
 | File | What to write |
@@ -57,6 +71,10 @@ ruff's default, so a ruff release cannot turn an untouched `main` red.
 **CI** (`.github/workflows/ci.yml`) — lint, format check and tests across the
 matrix with `--locked` throughout; a `docs` job building Sphinx with `-W`; and a
 `pip-audit` job over the locked runtime dependencies.
+
+**Branch protection** (`.github/main-ruleset.json`) — the ruleset to apply to
+each new repository after creation. GitHub template creation copies the file,
+not the repository setting.
 
 **Releases** (`.github/workflows/publish.yml`) — triggered by publishing a GitHub
 Release, runs CI first, and uploads via PyPI trusted publishing (no stored
@@ -96,5 +114,3 @@ URLs there. The template already does; keep it that way when you edit.
 - **Nothing you must generate before CI passes.** `uv.lock` is committed, so a
   repo created from this template is green on its first push. Re-run `uv lock`
   after you change dependencies — CI is `--locked` and will fail on a stale one.
-- **Branch protection.** Set on the repo, not in the tree. Most org repos require
-  a green CI run and a review on `main`.
